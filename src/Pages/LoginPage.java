@@ -25,6 +25,9 @@ public class LoginPage extends BasicPage {
 		return this.driver.findElement(By.name("password"));
 	}
 	
+	public WebElement getLoginBtn() {
+		return this.driver.findElement(By.name("btn_submit"));
+	}
 
 	
 	
@@ -34,7 +37,7 @@ public class LoginPage extends BasicPage {
 		this.getEmailUsername().sendKeys(username);
 		this.getPassword().clear();
 		this.getPassword().sendKeys(password);
-
+		this.getLoginBtn().click();
 		
 		
 	}
