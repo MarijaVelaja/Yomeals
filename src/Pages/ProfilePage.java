@@ -26,7 +26,7 @@ public class ProfilePage extends BasicPage {
 		return this.driver.findElement(By.name("user_last_name"));
 	}
 
-	public WebElement getAdress() {
+	public WebElement getAddress() {
 		return this.driver.findElement(By.name("user_address"));
 	}
 
@@ -61,8 +61,49 @@ public class ProfilePage extends BasicPage {
 	}
 	
 	
-	
-	
+	public WebElement getUpload() {
+		return this.driver.findElement(By.xpath("//*[@class='upload uploadFile-Js']"));
+	}
+
+	public WebElement getUploadForm() {
+		return this.driver.findElement(By.xpath("//*[@id='form-upload']/input"));
+	}
+
+	public void uploadImg(String imgPath) {
+		js.executeScript("arguments[0].click();", this.getUpload());
+		this.getUploadForm().sendKeys(imgPath);
+	}
+
+	public WebElement getRemoveImgBtn() {
+		return this.driver.findElement(By.className("remove"));
+	}
+
+	public void deleteImg() {
+		js.executeScript("arguments[0].click();", this.getRemoveImgBtn());
+	}
+
+	public void changeInfo(String firstName, String lastName, String address, String phone, String zipCode,
+			String country, String state, String city) throws InterruptedException {
+		this.getFirstName().clear();
+		this.getFirstName().sendKeys(firstName);
+		this.getLastName().clear();
+		this.getLastName().sendKeys(lastName);
+		this.getAddress().clear();
+		this.getAddress().sendKeys(address);
+		this.getPhone().clear();
+		this.getPhone().sendKeys(phone);
+		this.getZipCode().clear();
+		this.getZipCode().sendKeys(zipCode);
+		this.getCountry().selectByVisibleText(country);
+		Thread.sleep(1000);
+		this.getState().selectByVisibleText(state);
+		Thread.sleep(1000);
+		this.getCity().selectByVisibleText(city);
+		Thread.sleep(4000);
+		this.getSaveButton().submit();
+
+	}
+
 	
 	
 	
