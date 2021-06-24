@@ -25,8 +25,7 @@ public class NotificationSistemPage extends BasicPage {
 	}
 
 	public void waitUntilMessageDisappears() {
-		this.waiter.until(ExpectedConditions.attributeContains(By.xpath(
-				"//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]"),
+		this.waiter.until(ExpectedConditions.attributeContains(By.xpath("//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]"),
 				"style", "display: none;"));
 
 	}
