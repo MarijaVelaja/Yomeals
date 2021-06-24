@@ -38,25 +38,24 @@ public class ProfilePage extends BasicPage {
 		return this.driver.findElement(By.name("user_zip"));
 	}
 
-	public Select getCountry () {
+	public Select getCountry() {
 		WebElement selectCountry = this.driver.findElement(By.id("user_country_id"));
-		Select country = new Select (selectCountry);
+		Select country = new Select(selectCountry);
 		return country;
 	}
-	
-	public Select getState () {
+
+	public Select getState() {
 		WebElement selectState = this.driver.findElement(By.id("user_state_id"));
-		Select state = new Select (selectState);
+		Select state = new Select(selectState);
 		return state;
 	}
-	
-	
-	public Select getCity () {
+
+	public Select getCity() {
 		WebElement selectCity = this.driver.findElement(By.id("user_city"));
-		Select country = new Select (selectCity);
+		Select country = new Select(selectCity);
 		return country;
 	}
-	
+
 	public WebElement getSaveButton() {
 		return this.driver.findElement(By.xpath("//input[@class ='btn btn--primary block-on-mobile']"));
 	}
