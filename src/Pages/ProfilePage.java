@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -69,18 +70,23 @@ public class ProfilePage extends BasicPage {
 		return this.driver.findElement(By.xpath("//*[@id='form-upload']/input"));
 	}
 
-	public void uploadImg(String imgPath) {
-		js.executeScript("arguments[0].click();", this.getUpload());
-		this.getUploadForm().sendKeys(imgPath);
+	public void uploadImg(String imgPath) throws InterruptedException {
+	Actions action = new Actions (driver);
+	WebElement element = driver.findElement(By.className("avatar"));
+	action.moveToElement(element).perform();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//a[@title='Uplaod']"));
+	js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//a[@title='Uplaod']")));
+	driver.findElement(By.xpath("//input[@type=\"file\"]")).sendKeys(imgPath);
+			
+		
 	}
 
-	public WebElement getRemoveImgBtn() {
-		return this.driver.findElement(By.className("remove"));
+	public void removeImg() {
+		js.executeScript("arguments[0].click();", driver.findElement(By.xpath("//*[@title='Remove']")));
 	}
 
-	public void deleteImg() {
-		js.executeScript("arguments[0].click();", this.getRemoveImgBtn());
-	}
+	
 
 	public void changeInfo(String firstName, String lastName, String address, String phone, String zipCode,
 			String country, String state, String city) throws InterruptedException {
