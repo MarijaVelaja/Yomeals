@@ -13,7 +13,7 @@ public class MealPage extends BasicPage {
 
 	}
 
-	public WebElement getAddTocart() {
+	public WebElement getAddTocart(double quantity) {
 		return this.driver.findElement(
 				By.xpath("//div[@class='d-flex align-items-center justify-content-between flex-lg--col']/a"));
 	}

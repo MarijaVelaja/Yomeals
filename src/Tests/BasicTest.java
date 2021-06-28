@@ -1,11 +1,19 @@
 package Tests;
 
+import java.io.File;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
@@ -56,26 +64,28 @@ public abstract class BasicTest {
 
 	}
 
-/*	@AfterMethod
-
-	public void cleanup() {
+	public void takeScreenshotWhenFailure(ITestResult result) throws InterruptedException, IOException{
+		if(ITestResult.FAILURE==result.getStatus()) {
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
+			File scr = screenshot.getScreenshotAs(OutputType.FILE);
+			
+			LocalDateTime ldt = LocalDateTime.now();
+			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+			
+			FileUtils.copyFile(scr, new File("./screenshots/"+ldt.format(dtf)+".png"));
+		
+		Thread.sleep(2000);
 		this.driver.quit();
-	}
-	*/
+		
+		
+		}
 	
 	
 	
 	
+		
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 	
 }
 

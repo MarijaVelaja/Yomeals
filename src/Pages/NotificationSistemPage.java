@@ -15,13 +15,13 @@ public class NotificationSistemPage extends BasicPage {
 	}
 
 	public WebElement getMessage() {
-		return this.driver.findElement(By.xpath(
-				"//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')][contains(@style,'display: block')]"));
-
+		return driver.findElement(By.xpath("//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')]"
+				+ "[contains(@style,'display: block')]"));
 	}
 
 	public String getTextMessage() {
-		return this.getMessage().getText();
+		return driver.findElement(By.xpath("//*[contains(@class, 'alert--success') or contains(@class, 'alert--danger')]"
+				+ "[contains(@style,'display: block')]")).getText();
 	}
 
 	public void waitUntilMessageDisappears() {
