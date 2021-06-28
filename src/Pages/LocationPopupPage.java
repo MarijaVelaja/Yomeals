@@ -24,7 +24,7 @@ public class LocationPopupPage extends BasicPage {
 	}
 
 	public WebElement getKeyword() {
-		return driver.findElement(By.id("locality_keyword"));
+		return driver.findElement(By.id("locality_keyworld"));
 	}
 
 	public WebElement getLocationItem(String locationName) {
