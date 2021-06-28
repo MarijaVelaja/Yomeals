@@ -21,7 +21,7 @@ public abstract class BasicTest {
 
 	protected WebDriver driver;
 	protected JavascriptExecutor js;
-	protected WebDriverWait wait;
+	protected WebDriverWait waiter;
 	protected LoginPage loginPage;
 	protected LocationPopupPage popUpPage;
 	protected NotificationSistemPage notificationPage;
@@ -40,19 +40,19 @@ public abstract class BasicTest {
 		System.setProperty("webdriver.chrome.driver", "driver-lib\\chromedriver.exe");
 		this.driver = new ChromeDriver();
 		this.js = (JavascriptExecutor) driver;
-		this.wait = new WebDriverWait(driver, 10);
+		this.waiter = new WebDriverWait(driver, 10);
 
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 
-		loginPage = new LoginPage(driver, js, wait);
-		popUpPage = new LocationPopupPage(driver, js, wait);
-		notificationPage = new NotificationSistemPage(driver, js, wait);
-		profilePage = new ProfilePage(driver, js, wait);
-		authPage = new AuthPage(driver, js, wait);
-		mealPage = new MealPage(driver, js, wait);
-		cartPage = new CartSummaryPage(driver, js, wait);
+		loginPage = new LoginPage(driver, js, waiter);
+		popUpPage = new LocationPopupPage(driver, js, waiter);
+		notificationPage = new NotificationSistemPage(driver, js, waiter);
+		profilePage = new ProfilePage(driver, js, waiter);
+		authPage = new AuthPage(driver, js, waiter);
+		mealPage = new MealPage(driver, js, waiter);
+		cartPage = new CartSummaryPage(driver, js, waiter);
 
 	}
 
