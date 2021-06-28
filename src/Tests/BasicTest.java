@@ -56,12 +56,12 @@ public abstract class BasicTest {
 
 	}
 
-	@AfterMethod
+/*	@AfterMethod
 
 	public void cleanup() {
 		this.driver.quit();
 	}
-	
+	*/
 	
 	
 	
